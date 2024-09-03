@@ -25,12 +25,12 @@ export const Navbar = () => {
           <Link href={nav.link} aria-label={nav.name}>
             <div className="flex items-center gap-3">
               <span>
-                <nav.icon className="size-6 block" />
+                <nav.icon className="size-6 max-sm:size-5 block" />
               </span>
               <span
                 className={`${
-                  isOpen ? "inline-block" : "hidden"
-                } transition-all duration-1000`}
+                  isOpen ? "inline-block opacity-100" : "hidden opacity-0"
+                } transition-all duration-300 ease-in-out`}
               >
                 {nav.name}
               </span>
@@ -44,20 +44,22 @@ export const Navbar = () => {
   return (
     <nav
       className={`${
-        isOpen ? "w-52" : " w-[4.5rem]"
-      } h-screen bg-[#0A1551] text-white px-4 py-4 transition-all duration-300`}
+        isOpen ? "w-52 max-md:absolute" : "w-[4.5rem] max-sm:w-[3.5rem]"
+      } h-screen bg-[#0A1551] text-white p-4 max-sm:p-2 transition-all duration-300 ease-in-out flex-shrink-0`}
     >
       <div className="h-full flex flex-col justify-between">
-        <ul className="space-y-2 font-semibold text-base">{navItems}</ul>
+        <ul className="space-y-2 font-semibold text-base max-sm:text-sm">
+          {navItems}
+        </ul>
         <button
           onClick={() => setIsOpen((prev) => !prev)}
           className="hover:bg-[#050C34] p-2 rounded-sm transition-all duration-150"
           aria-label="Toggle Navigation"
         >
           <RxDoubleArrowLeft
-            className={`size-6 ${
+            className={`size-6 max-sm:size-5 ${
               isOpen ? "rotate-0" : "rotate-180"
-            } transition-transform duration-300`}
+            } transition-transform duration-300 ease-in-out`}
           />
         </button>
       </div>
