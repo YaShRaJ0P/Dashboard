@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className="flex flex-row w-screen min-h-screen"
+        className="flex flex-row w-screen min-h-screen  overflow-x-hidden"
       >
         <Navbar />
         <main className="w-full ">{children}</main>

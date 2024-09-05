@@ -1,6 +1,4 @@
 import React from "react";
-import { FiSearch } from "react-icons/fi";
-import { FaPlus } from "react-icons/fa";
 import { Table } from "@/components/Table";
 import { SearchButton } from "@/components/SearchButton";
 import { AddUserWithModal } from "@/components/AddUserWithModal";
