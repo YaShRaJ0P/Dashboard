@@ -12,9 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className="flex flex-row">
+      <body
+        suppressHydrationWarning={true}
+        className="flex flex-row w-screen min-h-screen"
+      >
         <Navbar />
-        <main>{children}</main>
+        <main className="w-full ">{children}</main>
       </body>
     </html>
   );

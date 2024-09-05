@@ -45,7 +45,7 @@ export const Navbar = () => {
     <nav
       className={`${
         isOpen ? "w-52 max-md:absolute" : "w-[4.5rem] max-sm:w-[3.5rem]"
-      } h-screen bg-[#0A1551] text-white p-4 max-sm:p-2 transition-all duration-300 ease-in-out flex-shrink-0`}
+      } fixed inset-y-0 left-0 h-screen bg-[#0A1551] text-white p-4 max-sm:p-2 transition-all duration-300 ease-in-out flex-shrink-0 z-40`}
     >
       <div className="h-full flex flex-col justify-between">
         <ul className="space-y-2 font-semibold text-base max-sm:text-sm">
