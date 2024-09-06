@@ -1,6 +1,6 @@
 "use client";
 import React, { useMemo } from "react";
-import { FAKE_DATA } from "../app/fakedata";
+import { FAKE_ACTIVITY_DATA } from "../app/fakeActivityData";
 import { useTable, useSortBy, usePagination } from "react-table";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import {
@@ -12,29 +12,34 @@ import {
 
 import Image from "next/image";
 
-export const Table = () => {
-  const data = useMemo(() => FAKE_DATA, []);
+export const ActivityTable = () => {
+  const data = useMemo(() => FAKE_ACTIVITY_DATA, []);
+
   const columns = useMemo(
     () => [
       {
-        Header: "Avatar",
-        accessor: "image",
-        Cell: ({ value }) => (
-          <div className="flex items-center justify-center">
+        Header: "Name",
+        accessor: "name",
+        Cell: ({ row: { original } }) => (
+          <div className="flex items-center">
             <Image
-              src={value}
-              alt="avatar"
+              src={original.image}
+              alt={`${original.name}'s avatar`}
               width={40}
               height={40}
-              className="size-10 max-md:size-6 rounded-full object-cover"
+              className="rounded-full object-cover mr-3"
             />
+            <div>
+              <div className="text-sm font-medium text-gray-800">
+                {original.name}
+              </div>
+              <div className="text-xs text-gray-600">{original.email}</div>
+            </div>
           </div>
         ),
       },
-      { Header: "Name", accessor: "name" },
-      { Header: "Email ID", accessor: "email" },
-      { Header: "Mobile No.", accessor: "phone" },
-      { Header: "Summary", accessor: "summary" },
+      { Header: "Interaction", accessor: "interaction" },
+      { Header: "Time Spent (min)", accessor: "time" },
     ],
     []
   );
@@ -43,7 +48,7 @@ export const Table = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    page, // Use page instead of rows for pagination
+    page,
     prepareRow,
     state: { pageIndex, pageSize },
     canPreviousPage,
@@ -57,7 +62,7 @@ export const Table = () => {
     {
       columns,
       data,
-      initialState: { pageIndex: 0 }, // Start on the first page
+      initialState: { pageIndex: 0 },
     },
     useSortBy,
     usePagination
@@ -77,7 +82,7 @@ export const Table = () => {
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={column.id}
-                    className="text-left p-1 text-gray-700 font-semibold cursor-pointer"
+                    className="text-left p-1 text-gray-700 font-semibold cursor-pointer whitespace-pre"
                   >
                     <div className="flex items-center gap-1">
                       <span className="inline">{column.render("Header")}</span>
@@ -122,7 +127,7 @@ export const Table = () => {
                     <td
                       {...cell.getCellProps()}
                       key={cell.column.id}
-                      className="p-1 border-b border-gray-200 text-sm sm:text-base whitespace-pre"
+                      className="p-1 border-b border-gray-200 text-sm sm:text-base whitespace-pre w-full max-sm:pr-20"
                     >
                       {cell.render("Cell")}
                     </td>

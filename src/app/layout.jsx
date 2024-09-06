@@ -1,8 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { ContextProvider } from "@/utils/context";
-import { Wrapper } from "@/components/Wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +16,8 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
         className="flex flex-row w-screen min-h-screen  overflow-x-hidden"
       >
-        <ContextProvider>
-          {/* Only wrap the client-side part */}
-          <Wrapper>{children}</Wrapper>
-        </ContextProvider>
+        <Navbar />
+        <main className="w-full ">{children}</main>
       </body>
     </html>
   );

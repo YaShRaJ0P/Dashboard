@@ -4,10 +4,11 @@ import React, { useState, useMemo } from "react";
 import { IoHome, IoPeople, IoPeopleCircle } from "react-icons/io5";
 import { SiGoogleforms } from "react-icons/si";
 import { RxDoubleArrowLeft } from "react-icons/rx";
+import { RxActivityLog } from "react-icons/rx";
 
 const navList = [
-  { name: "Dashboard", icon: IoHome, link: "/" },
-  { name: "Users", icon: IoPeople, link: "/users" },
+  { name: "Users", icon: IoHome, link: "/" },
+  { name: "Activity Logs", icon: RxActivityLog, link: "/activity" },
   { name: "Teams", icon: IoPeopleCircle, link: "/teams" },
   { name: "Forms", icon: SiGoogleforms, link: "/forms" },
 ];
@@ -20,7 +21,7 @@ export const Navbar = () => {
       navList.map((nav) => (
         <li
           key={nav.link}
-          className="hover:bg-[#050C34] p-2 rounded-sm transition-all duration-150"
+          className="hover:bg-[#050C34] p-2 rounded-sm transition-all duration-150 whitespace-nowrap"
         >
           <Link href={nav.link} aria-label={nav.name}>
             <div className="flex items-center gap-3">
